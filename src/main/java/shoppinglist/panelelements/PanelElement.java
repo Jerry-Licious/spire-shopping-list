@@ -1,4 +1,4 @@
-package shoppingcart.panelelements;
+package shoppinglist.panelelements;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -6,8 +6,8 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.megacrit.cardcrawl.core.Settings;
-import shoppingcart.ShoppingListPanel;
-import shoppingcart.UIElement;
+import shoppinglist.ShoppingListPanel;
+import shoppinglist.UIElement;
 
 // Represents an element that can be displayed on a panel. Has a fixed size based on Settings.scale and a background
 // colour.

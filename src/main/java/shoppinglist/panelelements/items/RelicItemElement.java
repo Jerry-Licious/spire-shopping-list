@@ -1,12 +1,12 @@
-package shoppingcart.panelelements.items;
+package shoppinglist.panelelements.items;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.shop.StoreRelic;
-import shoppingcart.ShoppingListPanel;
-import shoppingcart.panelelements.PanelElement;
+import shoppinglist.ShoppingListPanel;
+import shoppinglist.panelelements.PanelElement;
 
 public class RelicItemElement extends ShopItemElement {
     public AbstractRelic relic;

@@ -1,4 +1,4 @@
-package shoppingcart;
+package shoppinglist;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
@@ -15,8 +15,8 @@ import com.megacrit.cardcrawl.shop.StorePotion;
 import com.megacrit.cardcrawl.shop.StoreRelic;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-import shoppingcart.panelelements.*;
-import shoppingcart.panelelements.items.*;
+import shoppinglist.panelelements.*;
+import shoppinglist.panelelements.items.*;
 
 import java.util.ArrayList;
 

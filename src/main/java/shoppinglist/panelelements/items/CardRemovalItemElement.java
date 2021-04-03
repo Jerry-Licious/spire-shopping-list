@@ -1,12 +1,12 @@
-package shoppingcart.panelelements.items;
+package shoppinglist.panelelements.items;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import shoppingcart.ShoppingListPanel;
-import shoppingcart.panelelements.PanelElement;
+import shoppinglist.ShoppingListPanel;
+import shoppinglist.panelelements.PanelElement;
 
 public class CardRemovalItemElement extends ShopItemElement {
     private TextureAtlas.AtlasRegion noDrawIcon;

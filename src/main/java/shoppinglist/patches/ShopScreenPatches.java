@@ -1,10 +1,10 @@
-package shoppingcart.patches;
+package shoppinglist.patches;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.shop.ShopScreen;
-import shoppingcart.ShoppingListPanel;
+import shoppinglist.ShoppingListPanel;
 
 public class ShopScreenPatches {
     @SpirePatch(clz = ShopScreen.class, method = SpirePatch.CONSTRUCTOR)

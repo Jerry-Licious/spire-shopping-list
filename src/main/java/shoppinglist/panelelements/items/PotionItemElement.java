@@ -1,9 +1,9 @@
-package shoppingcart.panelelements.items;
+package shoppinglist.panelelements.items;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.shop.StorePotion;
-import shoppingcart.ShoppingListPanel;
+import shoppinglist.ShoppingListPanel;
 
 public class PotionItemElement extends ShopItemElement {
     public AbstractPotion potion;

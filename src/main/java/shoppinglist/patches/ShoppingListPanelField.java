@@ -1,9 +1,9 @@
-package shoppingcart.patches;
+package shoppinglist.patches;
 
 import com.evacipated.cardcrawl.modthespire.lib.SpireField;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.megacrit.cardcrawl.shop.ShopScreen;
-import shoppingcart.ShoppingListPanel;
+import shoppinglist.ShoppingListPanel;
 
 // Add a shopping list field to the ShopScreen class so it is included on every shop screen.
 @SpirePatch(clz = ShopScreen.class, method = SpirePatch.CLASS)

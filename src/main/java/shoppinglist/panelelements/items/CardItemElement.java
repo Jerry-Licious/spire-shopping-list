@@ -1,4 +1,4 @@
-package shoppingcart.panelelements.items;
+package shoppinglist.panelelements.items;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
@@ -7,9 +7,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
-import shoppingcart.ShoppingListPanel;
-import shoppingcart.panelelements.PanelElement;
-import shoppingcart.panelelements.PanelFont;
+import shoppinglist.ShoppingListPanel;
+import shoppinglist.panelelements.PanelElement;
+import shoppinglist.panelelements.PanelFont;
 
 public class CardItemElement extends ShopItemElement {
     public AbstractCard card;

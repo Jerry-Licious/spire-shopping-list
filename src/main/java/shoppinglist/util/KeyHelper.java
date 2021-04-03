@@ -1,4 +1,4 @@
-package shoppingcart.util;
+package shoppinglist.util;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;

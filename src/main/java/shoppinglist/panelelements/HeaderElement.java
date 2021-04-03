@@ -1,9 +1,9 @@
-package shoppingcart.panelelements;
+package shoppinglist.panelelements;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.helpers.FontHelper;
-import shoppingcart.ShoppingListPanel;
+import shoppinglist.ShoppingListPanel;
 
 // Labels the two columns of the panel.
 public class HeaderElement extends PanelElement {

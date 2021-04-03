@@ -1,11 +1,11 @@
-package shoppingcart.panelelements;
+package shoppinglist.panelelements;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
-import shoppingcart.ShoppingListPanel;
+import shoppinglist.ShoppingListPanel;
 
 // Displays the total price of all items on the panel.
 public class TotalElement extends PanelElement {

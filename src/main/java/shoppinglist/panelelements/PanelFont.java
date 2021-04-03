@@ -1,4 +1,4 @@
-package shoppingcart.panelelements;
+package shoppinglist.panelelements;
 
 import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;

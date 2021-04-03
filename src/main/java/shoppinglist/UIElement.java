@@ -1,4 +1,4 @@
-package shoppingcart;
+package shoppinglist;
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.helpers.Hitbox;

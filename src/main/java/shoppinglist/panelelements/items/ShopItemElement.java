@@ -1,12 +1,12 @@
-package shoppingcart.panelelements.items;
+package shoppinglist.panelelements.items;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.megacrit.cardcrawl.helpers.FontHelper;
-import shoppingcart.ShoppingListPanel;
-import shoppingcart.panelelements.PanelElement;
-import shoppingcart.panelelements.PanelFont;
+import shoppinglist.ShoppingListPanel;
+import shoppinglist.panelelements.PanelElement;
+import shoppinglist.panelelements.PanelFont;
 
 // Represents a shop item, has a price and an item that can be rendered.
 public abstract class ShopItemElement extends PanelElement {
