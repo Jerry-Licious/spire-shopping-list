@@ -5,7 +5,7 @@
 #### Features
 * Added a shopping list menu that can be dragged around.
 
-## [Unreleased]
+## [v0.0.2] - Minor Improvements
 
 #### Features
 
