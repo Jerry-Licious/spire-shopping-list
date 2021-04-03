@@ -2,7 +2,7 @@
   "modid": "shopping_list",
   "name": "Shopping List",
   "author_list": ["Jerry"],
-  "description": "~",
+  "description": "Plan your shopping ahead of time instead of pulling up a calculator! When entering a shop, the mod will add a Shopping List panel to the shop screen.\n\nLegend:\n* Each shop item is displayed as in a row with an image and a cost to represent it.\n  * Cards have their names displayed and their card art as their background.\n  * Relics and potions are directly displayed.\n  * Card removals have a icon with a card and a red X over it.\n* The gold icon represents the total price of all items in the list.\n* The money pouch icon represents the remaining gold after purchasing everything in the list.\n\nUsage:\n* Click and hold on to the orange bar to drag the list around to not block the view.\n* Alt+Click an item to add it to the shopping list.\n* Click an item on the list to remove it.",
   "version": "0.0.1",
   "sts_version": "12-22-2020",
   "mts_version": "3.19.0",
