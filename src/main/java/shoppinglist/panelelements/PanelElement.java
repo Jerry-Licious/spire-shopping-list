@@ -12,7 +12,7 @@ import shoppinglist.UIElement;
 // Represents an element that can be displayed on a panel. Has a fixed size based on Settings.scale and a background
 // colour.
 public abstract class PanelElement extends UIElement {
-    public static float WIDTH = 280f;
+    public static float WIDTH = 260f;
     public static float HEIGHT = 50f;
 
     public Color backgroundColour;

@@ -11,3 +11,7 @@
 
 * Added mod badge and config menu.
 * Added an option to toggle whether card arts are used to display cards in the shopping list.
+
+#### Changes
+
+* The shopping list is now slightly thinner.
