@@ -1,8 +1,10 @@
 package shoppinglist.config;
 
 import basemod.BaseMod;
+import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
+import shoppinglist.ShoppingListPanel;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -11,11 +13,12 @@ public class Config {
     private Properties defaults = new Properties();
     private SpireConfig spireConfig;
     public Config() {
-        defaults.put("useCardArt", true);
+        defaults.setProperty("useCardArt", String.valueOf(true));
+        defaults.setProperty("allowReplies", String.valueOf(true));
 
-        defaults.put("shownDragTooltip", false);
-        defaults.put("shownAltClickTooltip", false);
-        defaults.put("shownRemoveTooltip", false);
+        defaults.setProperty("shownDragTooltip", String.valueOf(false));
+        defaults.setProperty("shownAltClickTooltip", String.valueOf(false));
+        defaults.setProperty("shownRemoveTooltip", String.valueOf(false));
 
         try {
             spireConfig = new SpireConfig("shopping_list", "config", defaults);
@@ -28,11 +31,21 @@ public class Config {
     public void setUseCardArt(boolean value) {
         spireConfig.setBool("useCardArt", value);
     }
-    public boolean usesCardArt() {
+    public boolean useCardArt() {
         return spireConfig.getBool("useCardArt");
     }
     public void toggleUseCardArt() {
-        setUseCardArt(!usesCardArt());
+        setUseCardArt(!useCardArt());
+    }
+
+    public void setAllowReplies(boolean value) {
+        spireConfig.setBool("allowReplies", value);
+    }
+    public boolean allowReplies() {
+        return spireConfig.getBool("allowReplies");
+    }
+    public void toggleAllowReplies() {
+        setAllowReplies(!allowReplies());
     }
 
     public void save() {

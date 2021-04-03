@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePostfixPatch;
 import com.megacrit.cardcrawl.shop.ShopScreen;
+import shoppinglist.ShoppingListMod;
 import shoppinglist.ShoppingListPanel;
 
 import java.util.HashMap;
@@ -66,7 +67,7 @@ public class ShopScreenPatches {
 
         @SpirePostfixPatch
         public static void createReply(ShopScreen instance, String message) {
-            if (replies.containsKey(message)) {
+            if (ShoppingListMod.config.allowReplies() && replies.containsKey(message)) {
                 ShoppingListPanelField.shoppingList.get(instance).queueMessage(replies.get(message));
             }
         }

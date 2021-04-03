@@ -44,7 +44,7 @@ public class CardItemElement extends ShopItemElement {
                 cardNameColour = Color.WHITE.cpy();
         }
 
-        if (ShoppingListMod.config.usesCardArt()) {
+        if (ShoppingListMod.config.useCardArt()) {
             backgroundColour = new Color(0f, 0f, 0f, 0.5f);
         }
     }
@@ -61,7 +61,7 @@ public class CardItemElement extends ShopItemElement {
 
     @Override
     public void renderBackground(SpriteBatch spriteBatch) {
-        if (ShoppingListMod.config.usesCardArt()) {
+        if (ShoppingListMod.config.useCardArt()) {
             spriteBatch.setColor(Color.WHITE);
             spriteBatch.draw(cardImage, x, y - height,
                     PanelElement.WIDTH * Settings.scale, PanelElement.HEIGHT * Settings.scale);
@@ -74,7 +74,7 @@ public class CardItemElement extends ShopItemElement {
     public void update() {
         super.update();
 
-        if (ShoppingListMod.config.usesCardArt()) {
+        if (ShoppingListMod.config.useCardArt()) {
             if (hitbox.hovered) {
                 backgroundColour = new Color(1f, 0f, 0f, 0.5f);
             } else {
