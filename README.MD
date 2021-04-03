@@ -22,5 +22,6 @@ Plan your shopping ahead of time instead of pulling up a calculator! When enteri
 ### Configurating
 
 Go to **Mods > Shopping List > Config** to change the mod's functions. Currently you can:
-
 * Toggle whether card arts are used to represent cards in the shopping list.
+* Toggle whether the shopping list talks back to the merchant.
+* Toggle whether icons are used to represent relics, potions and card rewards.
