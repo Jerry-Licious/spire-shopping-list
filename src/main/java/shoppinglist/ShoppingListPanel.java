@@ -37,8 +37,8 @@ public class ShoppingListPanel extends UIElement {
     private ArrayList<ShopItemElement> items = new ArrayList<>();
 
     public ShoppingListPanel() {
-        x = Settings.WIDTH * 0.7f;
-        y = Settings.HEIGHT * 0.5f;
+        x = 10f;
+        y = Settings.HEIGHT * 0.8f;
 
         width = PanelElement.WIDTH * Settings.scale;
         height = PanelElement.HEIGHT * Settings.scale;

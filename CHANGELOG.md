@@ -16,6 +16,7 @@
 #### Changes
 
 * The shopping list is now slightly thinner.
+* The shopping list now appears at the left side of the screen when you first open a shop screen.
 
 #### Bug Fixes
 
