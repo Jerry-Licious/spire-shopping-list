@@ -30,7 +30,7 @@
 * The shopping list now displays tooltip through its speech bubble.
 * The shopping list can now reply to the merchant's messages.
 
-## [Unreleased]
+## [0.0.4] - 2021-04-04 - Minor Improvements
 
 #### Features
 
