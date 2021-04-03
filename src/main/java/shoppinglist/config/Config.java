@@ -3,7 +3,6 @@ package shoppinglist.config;
 import basemod.BaseMod;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
-import com.megacrit.cardcrawl.helpers.ImageMaster;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -30,6 +29,14 @@ public class Config {
     }
     public void toggleUseCardArt() {
         setUseCardArt(!usesCardArt());
+    }
+
+    public void save() {
+        try {
+            spireConfig.save();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void setupConfigMenu() {

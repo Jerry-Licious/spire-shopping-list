@@ -14,6 +14,7 @@ public class ConfigMenu extends ModPanel {
                 Settings.CREAM_COLOR, FontHelper.charDescFont,
                 ShoppingListMod.config.usesCardArt(), this, (modLabel) -> {}, (modToggleButton) -> {
                     ShoppingListMod.config.toggleUseCardArt();
+                    ShoppingListMod.config.save();
         });
         addUIElement(enableCardArt);
     }
