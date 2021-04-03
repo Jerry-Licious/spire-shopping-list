@@ -7,6 +7,7 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.unlock.UnlockTracker;
+import shoppinglist.ShoppingListMod;
 import shoppinglist.ShoppingListPanel;
 import shoppinglist.panelelements.PanelElement;
 import shoppinglist.panelelements.PanelFont;
@@ -43,7 +44,9 @@ public class CardItemElement extends ShopItemElement {
                 cardNameColour = Color.WHITE.cpy();
         }
 
-        backgroundColour = new Color(0f, 0f, 0f, 0.5f);
+        if (ShoppingListMod.config.usesCardArt()) {
+            backgroundColour = new Color(0f, 0f, 0f, 0.5f);
+        }
     }
 
     public CardItemElement(ShoppingListPanel panel, AbstractCard card) {
@@ -58,9 +61,11 @@ public class CardItemElement extends ShopItemElement {
 
     @Override
     public void renderBackground(SpriteBatch spriteBatch) {
-        spriteBatch.setColor(Color.WHITE);
-        spriteBatch.draw(cardImage, x, y - height,
-                PanelElement.WIDTH * Settings.scale, PanelElement.HEIGHT * Settings.scale);
+        if (ShoppingListMod.config.usesCardArt()) {
+            spriteBatch.setColor(Color.WHITE);
+            spriteBatch.draw(cardImage, x, y - height,
+                    PanelElement.WIDTH * Settings.scale, PanelElement.HEIGHT * Settings.scale);
+        }
 
         super.renderBackground(spriteBatch);
     }
@@ -69,10 +74,12 @@ public class CardItemElement extends ShopItemElement {
     public void update() {
         super.update();
 
-        if (hitbox.hovered) {
-            backgroundColour = new Color(1f, 0f, 0f, 0.5f);
-        } else {
-            backgroundColour = new Color(0f, 0f, 0f, 0.4f);
+        if (ShoppingListMod.config.usesCardArt()) {
+            if (hitbox.hovered) {
+                backgroundColour = new Color(1f, 0f, 0f, 0.5f);
+            } else {
+                backgroundColour = new Color(0f, 0f, 0f, 0.4f);
+            }
         }
     }
 }

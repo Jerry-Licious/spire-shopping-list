@@ -19,3 +19,8 @@ Plan your shopping ahead of time instead of pulling up a calculator! When enteri
 * **Alt+Click** an item to add it to the shopping list.
 * **Click** an item on the list to remove it.
 
+### Configurating
+
+Go to **Mods > Shopping List > Config** to change the mod's functions. Currently you can:
+
+* Toggle whether card arts are used to represent cards in the shopping list.
