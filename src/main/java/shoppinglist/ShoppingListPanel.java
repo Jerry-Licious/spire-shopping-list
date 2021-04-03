@@ -17,6 +17,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import shoppinglist.panelelements.*;
 import shoppinglist.panelelements.items.*;
+import shoppinglist.patches.StorePotionPurchasePatch;
 
 import java.util.ArrayList;
 
@@ -197,7 +198,7 @@ public class ShoppingListPanel extends UIElement {
 
     public void addItem(StorePotion storePotion) {
         if (items.stream().anyMatch((item) -> item instanceof PotionItemElement &&
-                ((PotionItemElement) item).potion == storePotion.potion)) {
+                StorePotionPurchasePatch.potionEq(((PotionItemElement) item).potion,storePotion.potion))) {
             return;
         }
         if (storePotion.price > AbstractDungeon.player.gold - totalCost()) {
@@ -209,7 +210,7 @@ public class ShoppingListPanel extends UIElement {
 
     public void removeItem(StorePotion storePotion) {
         items.removeIf((item) -> item instanceof PotionItemElement &&
-                ((PotionItemElement) item).potion == storePotion.potion);
+                (StorePotionPurchasePatch.potionEq(((PotionItemElement) item).potion,storePotion.potion)));
     }
 
     public void addCardRemoval() {

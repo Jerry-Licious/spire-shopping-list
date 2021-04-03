@@ -4,6 +4,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.shop.StorePotion;
 import shoppinglist.ShoppingListPanel;
 import shoppinglist.util.KeyHelper;
@@ -31,5 +32,9 @@ public class StorePotionPurchasePatch {
         }
 
         return SpireReturn.Continue();
+    }
+
+    public static boolean potionEq(AbstractPotion a, AbstractPotion b) {
+        return a.getClass() == b.getClass() && a.getPrice() == b.getPrice();
     }
 }

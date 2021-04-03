@@ -16,3 +16,7 @@
 #### Changes
 
 * The shopping list is now slightly thinner.
+
+#### Bug Fixes
+
+* Fixed a bug where the same potion can be added to the list multiple times.
