@@ -29,3 +29,9 @@
 * The shopping list now displays a speech bubble when you cannot afford something.
 * The shopping list now displays tooltip through its speech bubble.
 * The shopping list can now reply to the merchant's messages.
+
+## [Unreleased]
+
+#### Features
+
+* Added config option for using icons to represent relics, potions and card removal. 
