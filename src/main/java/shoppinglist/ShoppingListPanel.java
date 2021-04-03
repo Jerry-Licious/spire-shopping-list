@@ -13,6 +13,9 @@ import com.megacrit.cardcrawl.helpers.input.InputHelper;
 import com.megacrit.cardcrawl.shop.ShopScreen;
 import com.megacrit.cardcrawl.shop.StorePotion;
 import com.megacrit.cardcrawl.shop.StoreRelic;
+import com.megacrit.cardcrawl.ui.DialogWord;
+import com.megacrit.cardcrawl.vfx.ShopSpeechBubble;
+import com.megacrit.cardcrawl.vfx.SpeechTextEffect;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import shoppinglist.panelelements.*;
@@ -59,6 +62,8 @@ public class ShoppingListPanel extends UIElement {
         items.forEach((element) -> element.render(spriteBatch));
         total.render(spriteBatch);
         balance.render(spriteBatch);
+
+        renderSpeech(spriteBatch);
 
         // Render all the hitboxes for debugging purposes.
         hitbox.render(spriteBatch);
@@ -135,6 +140,8 @@ public class ShoppingListPanel extends UIElement {
         total.update();
         balance.update();
 
+        updateSpeech();
+
         updateDragging();
         updateItemPositions();
     }
@@ -172,6 +179,7 @@ public class ShoppingListPanel extends UIElement {
         }
         if (storeRelic.price > AbstractDungeon.player.gold - totalCost()) {
             balance.flash();
+            createSpeech(ShopScreen.getCantBuyMsg());
             return;
         }
         items.add(new RelicItemElement(this, storeRelic));
@@ -187,6 +195,7 @@ public class ShoppingListPanel extends UIElement {
         }
         if (card.price > AbstractDungeon.player.gold - totalCost()) {
             balance.flash();
+            createSpeech(ShopScreen.getCantBuyMsg());
             return;
         }
         items.add(new CardItemElement(this, card));
@@ -203,6 +212,7 @@ public class ShoppingListPanel extends UIElement {
         }
         if (storePotion.price > AbstractDungeon.player.gold - totalCost()) {
             balance.flash();
+            createSpeech(ShopScreen.getCantBuyMsg());
             return;
         }
         items.add(new PotionItemElement(this, storePotion));
@@ -219,6 +229,7 @@ public class ShoppingListPanel extends UIElement {
         }
         if (ShopScreen.actualPurgeCost > AbstractDungeon.player.gold - totalCost()) {
             balance.flash();
+            createSpeech(ShopScreen.getCantBuyMsg());
             return;
         }
         items.add(new CardRemovalItemElement(this, ShopScreen.actualPurgeCost));
@@ -226,5 +237,39 @@ public class ShoppingListPanel extends UIElement {
 
     public void removeCardRemoval() {
         items.removeIf((item) -> item instanceof CardRemovalItemElement);
+    }
+
+    private ShopSpeechBubble speechBubble;
+    private SpeechTextEffect dialogTextEffect;
+    private void renderSpeech(SpriteBatch spriteBatch) {
+        if (speechBubble != null) speechBubble.render(spriteBatch);
+        if (dialogTextEffect != null) dialogTextEffect.render(spriteBatch);
+    }
+
+    private void updateSpeech() {
+        if (speechBubble != null) {
+            speechBubble.update();
+            if (speechBubble.isDone) {
+                speechBubble = null;
+            }
+        }
+        if (dialogTextEffect != null) {
+            dialogTextEffect.update();
+            if (dialogTextEffect.isDone) {
+                dialogTextEffect = null;
+            }
+        }
+    }
+
+    public void createSpeech(String message) {
+        // The size of a speech bubble is 350 by 270.
+        float bubbleX = x + width / 2f - 350f / 2f * Settings.scale;
+        float bubbleY = y - height - 270f * Settings.scale;
+
+        speechBubble = new ShopSpeechBubble(bubbleX, bubbleY, 2f, message, true);
+
+        float textX = bubbleX + 164f * Settings.scale;
+        float textY = bubbleY + 126f * Settings.scale;
+        dialogTextEffect = new SpeechTextEffect(textX, textY, 2f, message, DialogWord.AppearEffect.BUMP_IN);
     }
 }

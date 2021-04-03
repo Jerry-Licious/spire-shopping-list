@@ -21,3 +21,9 @@
 #### Bug Fixes
 
 * Fixed a bug where the same potion can be added to the list multiple times.
+
+## [Unreleased]
+
+#### Features
+
+* The shopping list now displays a speech bubble when you cannot afford something.
