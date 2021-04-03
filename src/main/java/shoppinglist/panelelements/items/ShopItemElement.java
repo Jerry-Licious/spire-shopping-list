@@ -27,8 +27,8 @@ public abstract class ShopItemElement extends PanelElement {
 
         renderItem(spriteBatch);
         renderLineUnderItem(spriteBatch);
-        FontHelper.renderFontCentered(spriteBatch, PanelFont.contentFont, Integer.toString(price),
-                x + width * 0.8f, y - height * 0.5f, Color.WHITE);
+        FontHelper.renderFontRightTopAligned(spriteBatch, PanelFont.contentFont, Integer.toString(price),
+                x + width * 0.92f, y - height * 0.3f, Color.WHITE);
 
         hitbox.render(spriteBatch);
     }

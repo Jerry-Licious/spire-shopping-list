@@ -3,6 +3,7 @@ package shoppinglist.panelelements;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 import shoppinglist.ShoppingListMod;
@@ -28,7 +29,7 @@ public class TotalElement extends PanelElement {
                     x + width * 0.08f, y - height * 0.3f, Color.WHITE);
         }
 
-        FontHelper.renderFontCentered(spriteBatch, PanelFont.contentFont, Integer.toString(panel.totalCost()),
-                x + width * 0.8f, y - height * 0.5f, Color.GOLD);
+        FontHelper.renderFontRightTopAligned(spriteBatch, PanelFont.contentFont, Integer.toString(panel.totalCost()),
+                x + width * 0.92f, y - height * 0.3f, Color.GOLD);
     }
 }

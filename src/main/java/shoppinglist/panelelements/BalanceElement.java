@@ -30,9 +30,9 @@ public class BalanceElement  extends PanelElement {
                     x + width * 0.08f, y - height * 0.3f, Color.WHITE);
         }
 
-        FontHelper.renderFontCentered(spriteBatch, PanelFont.contentFont,
+        FontHelper.renderFontRightTopAligned(spriteBatch, PanelFont.contentFont,
                 Integer.toString(AbstractDungeon.player.gold - panel.totalCost()),
-                x + width * 0.8f, y - height * 0.5f, Color.GOLD);
+                x + width * 0.92f, y - height * 0.3f, Color.GOLD);
     }
 
     private static float totalFlashDuration = 0.3f;

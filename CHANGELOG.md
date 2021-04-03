@@ -35,3 +35,7 @@
 #### Features
 
 * Added config option for using icons to represent relics, potions and card removal. 
+
+#### Changes
+
+* Price numbers are now aligned to the right.
