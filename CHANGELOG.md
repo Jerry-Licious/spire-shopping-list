@@ -1,11 +1,11 @@
 # Changelog
 
-## [v0.0.1] - Initial Release
+## [v0.0.1] - 2021-04-02 - Initial Release
 
 #### Features
 * Added a shopping list menu that can be dragged around.
 
-## [v0.0.2] - Minor Improvements
+## [v0.0.2] - 2021-04-02 - Minor Improvements
 
 #### Features
 
@@ -22,7 +22,7 @@
 
 * Fixed a bug where the same potion can be added to the list multiple times.
 
-## [0.0.3] - Here Come the Memes
+## [0.0.3] - 2021-04-03 - Here Come the Memes
 
 #### Features
 
