@@ -1,6 +1,6 @@
 {
-  "modid": "shopping_cart",
-  "name": "Shopping Cart",
+  "modid": "shopping_list",
+  "name": "Shopping List",
   "author_list": ["Jerry"],
   "description": "~",
   "version": "0.0.1",
