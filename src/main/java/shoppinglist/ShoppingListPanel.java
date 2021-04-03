@@ -145,6 +145,7 @@ public class ShoppingListPanel extends UIElement {
 
         speechTimer -= Gdx.graphics.getDeltaTime();
         attemptToShowTooltip();
+        attemptToShowQueuedMessages();
         updateSpeech();
 
         updateDragging();
@@ -276,6 +277,20 @@ public class ShoppingListPanel extends UIElement {
         float textX = bubbleX + 164f * Settings.scale;
         float textY = bubbleY + 126f * Settings.scale;
         dialogTextEffect = new SpeechTextEffect(textX, textY, 4f, message, DialogWord.AppearEffect.BUMP_IN);
+    }
+
+    private ArrayList<String> queuedMessages = new ArrayList<>();
+    public void queueMessage(String message) {
+        queuedMessages.add(message);
+    }
+    private void attemptToShowQueuedMessages() {
+        if (speechBubble == null && dialogTextEffect == null && MathUtils.random() < 0.01
+                && speechTimer < 0f && !queuedMessages.isEmpty()) {
+            createSpeech(queuedMessages.get(0));
+            queuedMessages.remove(0);
+
+            speechTimer = MathUtils.random(6f, 9f);
+        }
     }
 
     private void attemptToShowTooltip() {
