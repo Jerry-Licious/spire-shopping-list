@@ -13,6 +13,10 @@ public class Config {
     public Config() {
         defaults.put("useCardArt", true);
 
+        defaults.put("shownDragTooltip", false);
+        defaults.put("shownAltClickTooltip", false);
+        defaults.put("shownRemoveTooltip", false);
+
         try {
             spireConfig = new SpireConfig("shopping_list", "config", defaults);
             spireConfig.save();
@@ -43,5 +47,12 @@ public class Config {
         BaseMod.registerModBadge(new Texture("shopping_list/icon.png"), "Shopping List", "Jerry",
                 "Plan your shopping ahead of time instead of pulling up a calculator!",
                 new ConfigMenu());
+    }
+
+    public boolean getBoolean(String key) {
+        return spireConfig.getBool(key);
+    }
+    public void setBoolean(String key, boolean value) {
+        spireConfig.setBool(key, value);
     }
 }

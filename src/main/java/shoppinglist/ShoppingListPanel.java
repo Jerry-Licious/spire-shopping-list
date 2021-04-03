@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.math.MathUtils;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
@@ -38,6 +39,8 @@ public class ShoppingListPanel extends UIElement {
     private BalanceElement balance = new BalanceElement(this);
     // The items in the shopping list.
     private ArrayList<ShopItemElement> items = new ArrayList<>();
+
+    private float speechTimer = 5f;
 
     public ShoppingListPanel() {
         x = 10f;
@@ -140,6 +143,8 @@ public class ShoppingListPanel extends UIElement {
         total.update();
         balance.update();
 
+        speechTimer -= Gdx.graphics.getDeltaTime();
+        attemptToShowTooltip();
         updateSpeech();
 
         updateDragging();
@@ -266,10 +271,39 @@ public class ShoppingListPanel extends UIElement {
         float bubbleX = x + width / 2f - 350f / 2f * Settings.scale;
         float bubbleY = y - height - 270f * Settings.scale;
 
-        speechBubble = new ShopSpeechBubble(bubbleX, bubbleY, 2f, message, true);
+        speechBubble = new ShopSpeechBubble(bubbleX, bubbleY, 4f, message, true);
 
         float textX = bubbleX + 164f * Settings.scale;
         float textY = bubbleY + 126f * Settings.scale;
-        dialogTextEffect = new SpeechTextEffect(textX, textY, 2f, message, DialogWord.AppearEffect.BUMP_IN);
+        dialogTextEffect = new SpeechTextEffect(textX, textY, 4f, message, DialogWord.AppearEffect.BUMP_IN);
+    }
+
+    private void attemptToShowTooltip() {
+        // 1% chance to show a new tooltip every tick.
+        if (speechBubble == null && dialogTextEffect == null && MathUtils.random() < 0.01 && speechTimer < 0f) {
+            if (!ShoppingListMod.config.getBoolean("shownDragTooltip")) {
+                createSpeech("Click and hold on to the orange bar to drag the list around.");
+                ShoppingListMod.config.setBoolean("shownDragTooltip", true);
+                ShoppingListMod.config.save();
+
+                speechTimer = MathUtils.random(10f, 15f);
+                return;
+            }
+            if (!ShoppingListMod.config.getBoolean("shownAltClickTooltip")) {
+                createSpeech("Alt+Click an item to add it to the shopping list.");
+                ShoppingListMod.config.setBoolean("shownAltClickTooltip", true);
+                ShoppingListMod.config.save();
+
+                speechTimer = MathUtils.random(10f, 15f);
+                return;
+            }
+            if (!ShoppingListMod.config.getBoolean("shownRemoveTooltip")) {
+                createSpeech("Click on an item in the shopping list to remove it.");
+                ShoppingListMod.config.setBoolean("shownRemoveTooltip", true);
+                ShoppingListMod.config.save();
+
+                speechTimer = MathUtils.random(10f, 15f);
+            }
+        }
     }
 }

@@ -27,3 +27,4 @@
 #### Features
 
 * The shopping list now displays a speech bubble when you cannot afford something.
+* The shopping list now displays tooltip through its speech bubble.
