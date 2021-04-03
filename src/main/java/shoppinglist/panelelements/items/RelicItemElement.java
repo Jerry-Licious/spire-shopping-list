@@ -3,10 +3,13 @@ package shoppinglist.panelelements.items;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.shop.StoreRelic;
+import shoppinglist.ShoppingListMod;
 import shoppinglist.ShoppingListPanel;
 import shoppinglist.panelelements.PanelElement;
+import shoppinglist.panelelements.PanelFont;
 
 public class RelicItemElement extends ShopItemElement {
     public AbstractRelic relic;
@@ -26,9 +29,15 @@ public class RelicItemElement extends ShopItemElement {
     @Override
     public void renderItem(SpriteBatch spriteBatch) {
         spriteBatch.setColor(Color.WHITE);
-        spriteBatch.draw(relic.outlineImg, x + width * 0.3f - relicImageSize / 2, y - height * 0.5f - relicImageSize / 2,
-                relicImageSize, relicImageSize);
-        spriteBatch.draw(relic.img, x + width * 0.3f - relicImageSize / 2, y - height * 0.5f - relicImageSize / 2,
-                relicImageSize, relicImageSize);
+
+        if (ShoppingListMod.config.useIcons()) {
+            spriteBatch.draw(relic.outlineImg, x + width * 0.3f - relicImageSize / 2, y - height * 0.5f - relicImageSize / 2,
+                    relicImageSize, relicImageSize);
+            spriteBatch.draw(relic.img, x + width * 0.3f - relicImageSize / 2, y - height * 0.5f - relicImageSize / 2,
+                    relicImageSize, relicImageSize);
+        } else {
+            FontHelper.renderFontLeftTopAligned(spriteBatch, PanelFont.contentFont, relic.name,
+                    x + width * 0.08f, y - height * 0.3f, Color.WHITE);
+        }
     }
 }

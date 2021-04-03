@@ -27,5 +27,15 @@ public class ConfigMenu extends ModPanel {
             ShoppingListMod.config.save();
         });
         addUIElement(enableReplyMessages);
+
+        ModLabeledToggleButton enableIcons = new ModLabeledToggleButton(
+                "Use icons instead of names to represent potions, relics and card removals.",
+                Settings.WIDTH * 0.15f, Settings.HEIGHT * 0.4f,
+                Settings.CREAM_COLOR, FontHelper.charDescFont,
+                ShoppingListMod.config.useIcons(), this, (modLabel) -> {}, (modToggleButton) -> {
+            ShoppingListMod.config.toggleUseIcons();
+            ShoppingListMod.config.save();
+        });
+        addUIElement(enableIcons);
     }
 }

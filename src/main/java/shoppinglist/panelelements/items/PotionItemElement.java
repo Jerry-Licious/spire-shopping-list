@@ -1,9 +1,13 @@
 package shoppinglist.panelelements.items;
 
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.potions.AbstractPotion;
 import com.megacrit.cardcrawl.shop.StorePotion;
+import shoppinglist.ShoppingListMod;
 import shoppinglist.ShoppingListPanel;
+import shoppinglist.panelelements.PanelFont;
 
 public class PotionItemElement extends ShopItemElement {
     public AbstractPotion potion;
@@ -20,10 +24,15 @@ public class PotionItemElement extends ShopItemElement {
 
     @Override
     public void renderItem(SpriteBatch spriteBatch) {
-        potion.posX = x + width * 0.3f;
-        potion.posY = y - height * 0.4f;
+        if (ShoppingListMod.config.useIcons()) {
+            potion.posX = x + width * 0.3f;
+            potion.posY = y - height * 0.4f;
 
-        potion.render(spriteBatch);
+            potion.render(spriteBatch);
+        } else {
+            FontHelper.renderFontLeftTopAligned(spriteBatch, PanelFont.contentFont, potion.name,
+                    x + width * 0.08f, y - height * 0.3f, Color.WHITE);
+        }
     }
 
     @Override

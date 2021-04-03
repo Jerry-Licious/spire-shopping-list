@@ -1,10 +1,8 @@
 package shoppinglist.config;
 
 import basemod.BaseMod;
-import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.Texture;
 import com.evacipated.cardcrawl.modthespire.lib.SpireConfig;
-import shoppinglist.ShoppingListPanel;
 
 import java.io.IOException;
 import java.util.Properties;
@@ -14,6 +12,7 @@ public class Config {
     private SpireConfig spireConfig;
     public Config() {
         defaults.setProperty("useCardArt", String.valueOf(true));
+        defaults.setProperty("useIcons", String.valueOf(true));
         defaults.setProperty("allowReplies", String.valueOf(true));
 
         defaults.setProperty("shownDragTooltip", String.valueOf(false));
@@ -46,6 +45,16 @@ public class Config {
     }
     public void toggleAllowReplies() {
         setAllowReplies(!allowReplies());
+    }
+
+    public void setUseIcons(boolean value) {
+        spireConfig.setBool("useIcons", value);
+    }
+    public boolean useIcons() {
+        return spireConfig.getBool("useIcons");
+    }
+    public void toggleUseIcons() {
+        setUseIcons(!useIcons());
     }
 
     public void save() {

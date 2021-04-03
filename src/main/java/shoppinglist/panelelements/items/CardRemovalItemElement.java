@@ -4,9 +4,12 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import shoppinglist.ShoppingListMod;
 import shoppinglist.ShoppingListPanel;
 import shoppinglist.panelelements.PanelElement;
+import shoppinglist.panelelements.PanelFont;
 
 public class CardRemovalItemElement extends ShopItemElement {
     private TextureAtlas.AtlasRegion noDrawIcon;
@@ -20,8 +23,13 @@ public class CardRemovalItemElement extends ShopItemElement {
 
     @Override
     public void renderItem(SpriteBatch spriteBatch) {
-        spriteBatch.setColor(Color.WHITE);
-        spriteBatch.draw(noDrawIcon, x + width * 0.3f - iconImageSize / 2, y - height * 0.5f - iconImageSize / 2,
-                iconImageSize, iconImageSize);
+        if (ShoppingListMod.config.useIcons()) {
+            spriteBatch.setColor(Color.WHITE);
+            spriteBatch.draw(noDrawIcon, x + width * 0.3f - iconImageSize / 2, y - height * 0.5f - iconImageSize / 2,
+                    iconImageSize, iconImageSize);
+        } else {
+            FontHelper.renderFontLeftTopAligned(spriteBatch, PanelFont.contentFont, "Card Removal",
+                    x + width * 0.08f, y - height * 0.3f, Color.WHITE);
+        }
     }
 }
