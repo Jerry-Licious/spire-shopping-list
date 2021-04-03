@@ -22,7 +22,7 @@
 
 * Fixed a bug where the same potion can be added to the list multiple times.
 
-## [Unreleased]
+## [0.0.3] - Here Come the Memes
 
 #### Features
 
