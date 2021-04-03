@@ -24,9 +24,11 @@ public class StoreCardPurchasePatch {
         // Intercept the interaction if the item is intended to be added to the list.
         if (KeyHelper.isAltPressed()) {
             // Add the item to the list.
-            ShoppingListPanelField.shoppingList.get(shopScreen).addItem(hoveredCard);
+            panel.addItem(hoveredCard);
 
             return SpireReturn.Return(null);
+        } else if (AbstractDungeon.player.gold >= hoveredCard.price) {
+            panel.removeItem(hoveredCard);
         }
 
         return SpireReturn.Continue();

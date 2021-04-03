@@ -176,6 +176,10 @@ public class ShoppingListPanel extends UIElement {
         items.add(new RelicItemElement(this, storeRelic));
     }
 
+    public void removeItem(StoreRelic storeRelic) {
+        items.removeIf((item) -> item instanceof RelicItemElement && ((RelicItemElement) item).relic == storeRelic.relic);
+    }
+
     public void addItem(AbstractCard card) {
         if (items.stream().anyMatch((item) -> item instanceof CardItemElement && ((CardItemElement) item).card == card)) {
             return;
@@ -185,6 +189,10 @@ public class ShoppingListPanel extends UIElement {
             return;
         }
         items.add(new CardItemElement(this, card));
+    }
+
+    public void removeItem(AbstractCard card) {
+        items.removeIf((item) -> item instanceof CardItemElement && ((CardItemElement) item).card == card);
     }
 
     public void addItem(StorePotion storePotion) {
@@ -199,6 +207,11 @@ public class ShoppingListPanel extends UIElement {
         items.add(new PotionItemElement(this, storePotion));
     }
 
+    public void removeItem(StorePotion storePotion) {
+        items.removeIf((item) -> item instanceof PotionItemElement &&
+                ((PotionItemElement) item).potion == storePotion.potion);
+    }
+
     public void addCardRemoval() {
         if (items.stream().anyMatch((item) -> item instanceof CardRemovalItemElement)) {
             return;
@@ -208,5 +221,9 @@ public class ShoppingListPanel extends UIElement {
             return;
         }
         items.add(new CardRemovalItemElement(this, ShopScreen.actualPurgeCost));
+    }
+
+    public void removeCardRemoval() {
+        items.removeIf((item) -> item instanceof CardRemovalItemElement);
     }
 }

@@ -4,6 +4,7 @@ import com.evacipated.cardcrawl.modthespire.lib.SpirePatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpirePrefixPatch;
 import com.evacipated.cardcrawl.modthespire.lib.SpireReturn;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+import com.megacrit.cardcrawl.shop.ShopScreen;
 import com.megacrit.cardcrawl.shop.StoreRelic;
 import shoppinglist.ShoppingListPanel;
 import shoppinglist.util.KeyHelper;
@@ -23,9 +24,11 @@ public class StoreRelicPurchasePatch {
         // Intercept the interaction if the item is intended to be added to the list.
         if (KeyHelper.isAltPressed()) {
             // Add the item to the list.
-            ShoppingListPanelField.shoppingList.get(AbstractDungeon.shopScreen).addItem(storeRelic);
+            panel.addItem(storeRelic);
 
             return SpireReturn.Return(null);
+        } else if (AbstractDungeon.player.gold >= storeRelic.price) {
+            panel.removeItem(storeRelic);
         }
 
         return SpireReturn.Continue();

@@ -23,9 +23,11 @@ public class StorePurgePurchasePatch {
         // Intercept the interaction if the item is intended to be added to the list.
         if (KeyHelper.isAltPressed()) {
             // Add the item to the list.
-            ShoppingListPanelField.shoppingList.get(AbstractDungeon.shopScreen).addCardRemoval();
+            panel.addCardRemoval();
 
             return SpireReturn.Return(null);
+        } else if (AbstractDungeon.player.gold >= ShopScreen.actualPurgeCost) {
+            panel.removeCardRemoval();
         }
 
         return SpireReturn.Continue();
