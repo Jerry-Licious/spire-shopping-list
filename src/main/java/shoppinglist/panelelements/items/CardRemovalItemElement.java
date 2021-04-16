@@ -4,8 +4,10 @@ import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.megacrit.cardcrawl.core.Settings;
+import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.relics.SmilingMask;
 import shoppinglist.ShoppingListMod;
 import shoppinglist.ShoppingListPanel;
 import shoppinglist.panelelements.PanelElement;
@@ -15,8 +17,8 @@ public class CardRemovalItemElement extends ShopItemElement {
     private TextureAtlas.AtlasRegion noDrawIcon;
     private static float iconImageSize = PanelElement.HEIGHT * Settings.scale * 0.8f;
 
-    public CardRemovalItemElement(ShoppingListPanel panel, int cost) {
-        super(panel, cost);
+    public CardRemovalItemElement(ShoppingListPanel panel, int price) {
+        super(panel, price);
 
         noDrawIcon = AbstractPower.atlas.findRegion("128/noDraw");
     }
@@ -30,6 +32,15 @@ public class CardRemovalItemElement extends ShopItemElement {
         } else {
             FontHelper.renderFontLeftTopAligned(spriteBatch, PanelFont.contentFont, "Card Removal",
                     x + width * 0.08f, y - height * 0.3f, Color.WHITE);
+        }
+    }
+
+    @Override
+    public void applyDiscount(float multiplier) {
+        if (AbstractDungeon.player.hasRelic(SmilingMask.ID)) {
+            price = 50;
+        } else {
+            super.applyDiscount(multiplier);
         }
     }
 }

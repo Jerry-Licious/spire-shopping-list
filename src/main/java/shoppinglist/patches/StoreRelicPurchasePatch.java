@@ -23,7 +23,7 @@ public class StoreRelicPurchasePatch {
         // Intercept the interaction if the item is intended to be added to the list.
         if (KeyHelper.isAltPressed()) {
             // Add the item to the list.
-            panel.addItem(storeRelic);
+            panel.addRelic(storeRelic);
 
             return SpireReturn.Return(null);
         } else if (AbstractDungeon.player.gold >= storeRelic.price) {

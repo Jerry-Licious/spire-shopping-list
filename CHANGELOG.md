@@ -42,6 +42,10 @@
 
 ## [Unreleased]
 
+#### Features
+
+* Item prices in the shopping list are now updated when you add to and remove membership card from the list.
+
 #### Bug Fixes
 
 * The shopping list's replies to the merchant should make more sense now.

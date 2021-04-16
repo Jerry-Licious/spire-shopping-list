@@ -11,6 +11,8 @@ import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.Hitbox;
 import com.megacrit.cardcrawl.helpers.input.InputHelper;
+import com.megacrit.cardcrawl.relics.MembershipCard;
+import com.megacrit.cardcrawl.relics.SmilingMask;
 import com.megacrit.cardcrawl.shop.ShopScreen;
 import com.megacrit.cardcrawl.shop.StorePotion;
 import com.megacrit.cardcrawl.shop.StoreRelic;
@@ -41,6 +43,8 @@ public class ShoppingListPanel extends UIElement {
     private ArrayList<ShopItemElement> items = new ArrayList<>();
 
     private float speechTimer = 5f;
+
+    private float costMultiplier = 1f;
 
     public ShoppingListPanel() {
         x = 10f;
@@ -138,6 +142,14 @@ public class ShoppingListPanel extends UIElement {
 
         items.forEach(ShopItemElement::update);
         items.removeAll(toRemove);
+        // Reset the discount if the membership card is removed from the list manually.
+        // The price does not need to be changed from removeItem because purchasing the membership card maintains the
+        // discount.
+        if (toRemove.stream().anyMatch((element) -> element instanceof RelicItemElement
+            && ((RelicItemElement) element).relic instanceof MembershipCard)) {
+            costMultiplier = 1f;
+            updateDiscounts();
+        }
         toRemove.clear();
 
         total.update();
@@ -175,53 +187,60 @@ public class ShoppingListPanel extends UIElement {
     }
 
     public int totalCost() {
-        return items.stream().map((element) -> element.price).reduce(0, Integer::sum);
+        return items.stream().map((element) -> element.basePrice).reduce(0, Integer::sum);
     }
 
-    public void addItem(StoreRelic storeRelic) {
+    public void addRelic(StoreRelic storeRelic) {
         if (items.stream().anyMatch((item) -> item instanceof RelicItemElement &&
                 ((RelicItemElement) item).relic == storeRelic.relic)) {
             return;
         }
-        if (storeRelic.price > AbstractDungeon.player.gold - totalCost()) {
+        if (storeRelic.price * costMultiplier > AbstractDungeon.player.gold - totalCost()) {
             balance.flash();
             createSpeech(ShopScreen.getCantBuyMsg());
             return;
         }
-        items.add(new RelicItemElement(this, storeRelic));
+
+        // Set the cost multiplier when the membership card is picked.
+        if (storeRelic.relic instanceof MembershipCard) {
+            costMultiplier = 0.5f;
+            updateDiscounts();
+        }
+
+        addItemElement(new RelicItemElement(this, storeRelic));
     }
 
     public void removeItem(StoreRelic storeRelic) {
         items.removeIf((item) -> item instanceof RelicItemElement && ((RelicItemElement) item).relic == storeRelic.relic);
     }
 
-    public void addItem(AbstractCard card) {
+    public void addCard(AbstractCard card) {
         if (items.stream().anyMatch((item) -> item instanceof CardItemElement && ((CardItemElement) item).card == card)) {
             return;
         }
-        if (card.price > AbstractDungeon.player.gold - totalCost()) {
+        if (card.price * costMultiplier > AbstractDungeon.player.gold - totalCost()) {
             balance.flash();
             createSpeech(ShopScreen.getCantBuyMsg());
             return;
         }
-        items.add(new CardItemElement(this, card));
+        addItemElement(new CardItemElement(this, card));
     }
 
     public void removeItem(AbstractCard card) {
         items.removeIf((item) -> item instanceof CardItemElement && ((CardItemElement) item).card == card);
     }
 
-    public void addItem(StorePotion storePotion) {
+    public void addPotion(StorePotion storePotion) {
         if (items.stream().anyMatch((item) -> item instanceof PotionItemElement &&
                 StorePotionPurchasePatch.potionEq(((PotionItemElement) item).potion,storePotion.potion))) {
             return;
         }
-        if (storePotion.price > AbstractDungeon.player.gold - totalCost()) {
+        if (storePotion.price * costMultiplier > AbstractDungeon.player.gold - totalCost()) {
             balance.flash();
             createSpeech(ShopScreen.getCantBuyMsg());
             return;
         }
-        items.add(new PotionItemElement(this, storePotion));
+        addItemElement(new PotionItemElement(this, storePotion));
     }
 
     public void removeItem(StorePotion storePotion) {
@@ -233,16 +252,22 @@ public class ShoppingListPanel extends UIElement {
         if (items.stream().anyMatch((item) -> item instanceof CardRemovalItemElement)) {
             return;
         }
-        if (ShopScreen.actualPurgeCost > AbstractDungeon.player.gold - totalCost()) {
+        if ((AbstractDungeon.player.hasRelic(SmilingMask.ID) ?
+                50 : ShopScreen.actualPurgeCost * costMultiplier) > AbstractDungeon.player.gold - totalCost()) {
             balance.flash();
             createSpeech(ShopScreen.getCantBuyMsg());
             return;
         }
-        items.add(new CardRemovalItemElement(this, ShopScreen.actualPurgeCost));
+        addItemElement(new CardRemovalItemElement(this, ShopScreen.actualPurgeCost));
     }
 
     public void removeCardRemoval() {
         items.removeIf((item) -> item instanceof CardRemovalItemElement);
+    }
+
+    private void addItemElement(ShopItemElement itemElement) {
+        itemElement.applyDiscount(costMultiplier);
+        items.add(itemElement);
     }
 
     private ShopSpeechBubble speechBubble;
@@ -320,5 +345,9 @@ public class ShoppingListPanel extends UIElement {
                 speechTimer = MathUtils.random(10f, 15f);
             }
         }
+    }
+
+    private void updateDiscounts() {
+        items.forEach((item) -> item.applyDiscount(costMultiplier));
     }
 }

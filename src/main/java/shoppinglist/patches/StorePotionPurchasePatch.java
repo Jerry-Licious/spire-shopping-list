@@ -24,7 +24,7 @@ public class StorePotionPurchasePatch {
         // Intercept the interaction if the item is intended to be added to the list.
         if (KeyHelper.isAltPressed()) {
             // Add the item to the list.
-            panel.addItem(storePotion);
+            panel.addPotion(storePotion);
 
             return SpireReturn.Return(null);
         } else if (AbstractDungeon.player.gold >= storePotion.price) {

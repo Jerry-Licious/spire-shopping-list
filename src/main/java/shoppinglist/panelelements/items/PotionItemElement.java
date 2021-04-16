@@ -12,8 +12,8 @@ import shoppinglist.panelelements.PanelFont;
 public class PotionItemElement extends ShopItemElement {
     public AbstractPotion potion;
 
-    public PotionItemElement(ShoppingListPanel panel, AbstractPotion potion, int cost) {
-        super(panel, cost);
+    public PotionItemElement(ShoppingListPanel panel, AbstractPotion potion, int price) {
+        super(panel, price);
 
         this.potion = potion.makeCopy();
     }

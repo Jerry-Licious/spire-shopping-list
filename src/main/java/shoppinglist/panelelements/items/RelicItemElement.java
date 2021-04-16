@@ -14,8 +14,8 @@ import shoppinglist.panelelements.PanelFont;
 public class RelicItemElement extends ShopItemElement {
     public AbstractRelic relic;
 
-    public RelicItemElement(ShoppingListPanel panel, AbstractRelic relic, int cost) {
-        super(panel, cost);
+    public RelicItemElement(ShoppingListPanel panel, AbstractRelic relic, int price) {
+        super(panel, price);
 
         this.relic = relic;
     }

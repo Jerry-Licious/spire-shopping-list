@@ -24,7 +24,7 @@ public class StoreCardPurchasePatch {
         // Intercept the interaction if the item is intended to be added to the list.
         if (KeyHelper.isAltPressed()) {
             // Add the item to the list.
-            panel.addItem(hoveredCard);
+            panel.addCard(hoveredCard);
 
             return SpireReturn.Return(null);
         } else if (AbstractDungeon.player.gold >= hoveredCard.price) {

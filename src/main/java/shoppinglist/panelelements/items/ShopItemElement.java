@@ -11,6 +11,7 @@ import shoppinglist.panelelements.PanelFont;
 // Represents a shop item, has a price and an item that can be rendered.
 public abstract class ShopItemElement extends PanelElement {
     public ShapeRenderer shapeRenderer;
+    public int basePrice;
     public int price;
 
     public ShopItemElement(ShoppingListPanel panel, int price) {
@@ -18,7 +19,8 @@ public abstract class ShopItemElement extends PanelElement {
 
         shapeRenderer = new ShapeRenderer();
 
-        this.price = price;
+        this.basePrice = price;
+        this.price = basePrice;
     }
 
     @Override
@@ -65,5 +67,9 @@ public abstract class ShopItemElement extends PanelElement {
             panel.addToToRemove(this);
             hitbox.clicked = false;
         }
+    }
+
+    public void applyDiscount(float multiplier) {
+        price = (int)(basePrice * multiplier);
     }
 }
