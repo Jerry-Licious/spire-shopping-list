@@ -7,7 +7,7 @@
     <packaging>jar</packaging>
 
     <name>Shopping List</name>
-    <description>Adds various different memes to your Slay the Spire experience.
+    <description>Plan your shopping ahead of time instead of pulling up a calculator!
     </description>
 
     <properties>
