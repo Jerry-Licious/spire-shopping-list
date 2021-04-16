@@ -52,15 +52,15 @@ public class ShopScreenPatches {
     public static class SpeechPatch {
         public static HashMap<String, String> replies = new HashMap<>();
         static {
-            replies.put("Hi! NL Buy something! NL Buy buy buy!", "I'd recommend you to plan on what to buy first.");
-            replies.put("I like your haircut", "I like my haircut as well.");
+            replies.put("Hi! NL Buy something! NL Buy buy buy!", "I'm gonna take a look around first.");
+            replies.put("I like your haircut", "I grew it myself.");
             replies.put("Do you have the time?", "Lots and lots of time.");
             replies.put("Are you a dog person or a cat person?", "I'm a money person.");
             replies.put("Take your time... NL ..... NL ... or not", "...");
-            replies.put("Do you like this rug? NL It's not for sale", "One day I will get a price of it.");
-            replies.put("Have you seen my courier?", "Never heard of it.");
-            replies.put("It's dangerous to go alone! Give me all your gold!", "I'd rather keep those for myself.");
-            replies.put("Buy somethin'", "Let us think about it.");
+            replies.put("Do you like this rug? NL It's not for sale", "You'll change your mind eventually");
+            replies.put("Have you seen my courier?", "Yeah it's adorable.");
+            replies.put("It's dangerous to go alone! Give me all your gold!", "I'd rather not.");
+            replies.put("Buy somethin'", "Let me think about it.");
             replies.put("I like gold.", "Me too.");
             replies.put("My favorite color is blue. NL How bout you?", "My favourite colour is gold.");
         }

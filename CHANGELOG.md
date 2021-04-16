@@ -39,3 +39,9 @@
 #### Changes
 
 * Price numbers are now aligned to the right.
+
+## [Unreleased]
+
+#### Bug Fixes
+
+* The shopping list's replies to the merchant should make more sense now.

@@ -281,11 +281,11 @@ public class ShoppingListPanel extends UIElement {
 
     private ArrayList<String> queuedMessages = new ArrayList<>();
     public void queueMessage(String message) {
+        speechTimer = 0.5f;
         queuedMessages.add(message);
     }
     private void attemptToShowQueuedMessages() {
-        if (speechBubble == null && dialogTextEffect == null && MathUtils.random() < 0.01
-                && speechTimer < 0f && !queuedMessages.isEmpty()) {
+        if (speechBubble == null && dialogTextEffect == null && speechTimer < 0f && !queuedMessages.isEmpty()) {
             createSpeech(queuedMessages.get(0));
             queuedMessages.remove(0);
 
