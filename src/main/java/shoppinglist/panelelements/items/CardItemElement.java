@@ -17,16 +17,16 @@ public class CardItemElement extends ShopItemElement {
     private TextureAtlas.AtlasRegion cardImage;
     private Color cardNameColour;
 
-    public CardItemElement(ShoppingListPanel panel, AbstractCard card, int cost) {
-        super(panel, cost);
+    public CardItemElement(ShoppingListPanel panel, AbstractCard card, int price) {
+        super(panel, price);
 
         this.card = card;
 
         // Use the beta art if it is enabled.
         if (UnlockTracker.betaCardPref.getBoolean(card.cardID, false) || Settings.PLAYTESTER_ART_MODE) {
             cardImage = new TextureAtlas.AtlasRegion(card.jokePortrait.getTexture(),
-                    card.portrait.getRegionX(), (int)(card.portrait.packedHeight * 0.3 + card.portrait.getRegionY()),
-                    card.portrait.packedWidth, (int)(card.portrait.packedHeight * PanelElement.HEIGHT / PanelElement.WIDTH));
+                    card.jokePortrait.getRegionX(), (int)(card.jokePortrait.packedHeight * 0.3 + card.jokePortrait.getRegionY()),
+                    card.jokePortrait.packedWidth, (int)(card.jokePortrait.packedHeight * PanelElement.HEIGHT / PanelElement.WIDTH));
         } else {
             cardImage = new TextureAtlas.AtlasRegion(card.portrait.getTexture(),
                     card.portrait.getRegionX(), (int)(card.portrait.packedHeight * 0.3 + card.portrait.getRegionY()),

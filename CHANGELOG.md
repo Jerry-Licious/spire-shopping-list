@@ -49,3 +49,4 @@
 #### Bug Fixes
 
 * The shopping list's replies to the merchant should make more sense now.
+* Beta card arts are now displayed correctly in the shopping list.
