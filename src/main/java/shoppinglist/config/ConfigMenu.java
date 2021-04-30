@@ -37,5 +37,15 @@ public class ConfigMenu extends ModPanel {
             ShoppingListMod.config.save();
         });
         addUIElement(enableIcons);
+
+        ModLabeledToggleButton preventOverdraw = new ModLabeledToggleButton(
+                "Prevent you from adding items that you cannot afford to the list.",
+                Settings.WIDTH * 0.15f, Settings.HEIGHT * 0.4f,
+                Settings.CREAM_COLOR, FontHelper.charDescFont,
+                ShoppingListMod.config.preventOverdraw(), this, (modLabel) -> {}, (modToggleButton) -> {
+            ShoppingListMod.config.togglePreventOverdraw();
+            ShoppingListMod.config.save();
+        });
+        addUIElement(preventOverdraw);
     }
 }

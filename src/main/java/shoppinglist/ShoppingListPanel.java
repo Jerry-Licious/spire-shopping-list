@@ -195,7 +195,8 @@ public class ShoppingListPanel extends UIElement {
                 ((RelicItemElement) item).relic == storeRelic.relic)) {
             return;
         }
-        if (storeRelic.price * costMultiplier > AbstractDungeon.player.gold - totalCost()) {
+        if (ShoppingListMod.config.preventOverdraw() &&
+                storeRelic.price * costMultiplier > AbstractDungeon.player.gold - totalCost()) {
             balance.flash();
             createSpeech(ShopScreen.getCantBuyMsg());
             return;
@@ -218,7 +219,8 @@ public class ShoppingListPanel extends UIElement {
         if (items.stream().anyMatch((item) -> item instanceof CardItemElement && ((CardItemElement) item).card == card)) {
             return;
         }
-        if (card.price * costMultiplier > AbstractDungeon.player.gold - totalCost()) {
+        if (ShoppingListMod.config.preventOverdraw() &&
+                card.price * costMultiplier > AbstractDungeon.player.gold - totalCost()) {
             balance.flash();
             createSpeech(ShopScreen.getCantBuyMsg());
             return;
@@ -235,7 +237,8 @@ public class ShoppingListPanel extends UIElement {
                 StorePotionPurchasePatch.potionEq(((PotionItemElement) item).potion,storePotion.potion))) {
             return;
         }
-        if (storePotion.price * costMultiplier > AbstractDungeon.player.gold - totalCost()) {
+        if (ShoppingListMod.config.preventOverdraw() &&
+                storePotion.price * costMultiplier > AbstractDungeon.player.gold - totalCost()) {
             balance.flash();
             createSpeech(ShopScreen.getCantBuyMsg());
             return;
@@ -252,8 +255,9 @@ public class ShoppingListPanel extends UIElement {
         if (items.stream().anyMatch((item) -> item instanceof CardRemovalItemElement)) {
             return;
         }
-        if ((AbstractDungeon.player.hasRelic(SmilingMask.ID) ?
-                50 : ShopScreen.actualPurgeCost * costMultiplier) > AbstractDungeon.player.gold - totalCost()) {
+        if (ShoppingListMod.config.preventOverdraw() &&
+                (AbstractDungeon.player.hasRelic(SmilingMask.ID) ? 50 : ShopScreen.actualPurgeCost * costMultiplier)
+                        > AbstractDungeon.player.gold - totalCost()) {
             balance.flash();
             createSpeech(ShopScreen.getCantBuyMsg());
             return;

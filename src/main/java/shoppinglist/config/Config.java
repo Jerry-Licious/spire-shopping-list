@@ -14,6 +14,7 @@ public class Config {
         defaults.setProperty("useCardArt", String.valueOf(true));
         defaults.setProperty("useIcons", String.valueOf(true));
         defaults.setProperty("allowReplies", String.valueOf(true));
+        defaults.setProperty("preventOverdraw", String.valueOf(true));
 
         defaults.setProperty("shownDragTooltip", String.valueOf(false));
         defaults.setProperty("shownAltClickTooltip", String.valueOf(false));
@@ -54,6 +55,16 @@ public class Config {
         return spireConfig.getBool("useIcons");
     }
     public void toggleUseIcons() {
+        setUseIcons(!useIcons());
+    }
+
+    public void setPreventOverdraw(boolean value) {
+        spireConfig.setBool("preventOverdraw", value);
+    }
+    public boolean preventOverdraw() {
+        return spireConfig.getBool("preventOverdraw");
+    }
+    public void togglePreventOverdraw() {
         setUseIcons(!useIcons());
     }
 
