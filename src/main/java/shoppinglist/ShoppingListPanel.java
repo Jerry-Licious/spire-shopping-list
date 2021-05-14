@@ -187,7 +187,7 @@ public class ShoppingListPanel extends UIElement {
     }
 
     public int totalCost() {
-        return items.stream().map((element) -> element.basePrice).reduce(0, Integer::sum);
+        return items.stream().map((element) -> element.price).reduce(0, Integer::sum);
     }
 
     public void addRelic(StoreRelic storeRelic) {

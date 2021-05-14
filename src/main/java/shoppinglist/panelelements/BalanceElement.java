@@ -46,7 +46,6 @@ public class BalanceElement  extends PanelElement {
     public void update() {
         super.update();
 
-        ShoppingListPanel.logger.info(flashDuration / totalFlashDuration);
         flashDuration -= Gdx.graphics.getDeltaTime();
         backgroundColour = new Color(0.3f, 0.3f, 0.3f, 1f).add(new Color(1f, 0f, 0f, 0.3f * flashDuration / totalFlashDuration).premultiplyAlpha());
     }

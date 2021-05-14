@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
+import com.megacrit.cardcrawl.relics.MembershipCard;
 import com.megacrit.cardcrawl.shop.StoreRelic;
 import shoppinglist.ShoppingListMod;
 import shoppinglist.ShoppingListPanel;
@@ -38,6 +39,13 @@ public class RelicItemElement extends ShopItemElement {
         } else {
             FontHelper.renderFontLeftTopAligned(spriteBatch, PanelFont.contentFont, relic.name,
                     x + width * 0.08f, y - height * 0.3f, Color.WHITE);
+        }
+    }
+
+    @Override
+    public void applyDiscount(float multiplier) {
+        if (!(relic instanceof MembershipCard)) {
+            super.applyDiscount(multiplier);
         }
     }
 }

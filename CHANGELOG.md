@@ -6,6 +6,12 @@
 
 * Added config option to allow the player to add items to the list that they cannot afford.
 
+#### Bug Fixes
+
+* Membership card no longer applies its discount to itself.
+* The shopping list will now sum discounted prices instead of base prices. 
+* Discounted prices now round up instead of down. 
+
 ## [0.0.5] - 2021-04-17 - Bug Fixes
 
 #### Features

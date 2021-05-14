@@ -70,6 +70,6 @@ public abstract class ShopItemElement extends PanelElement {
     }
 
     public void applyDiscount(float multiplier) {
-        price = (int)(basePrice * multiplier);
+        price = (int) Math.ceil(basePrice * multiplier);
     }
 }
