@@ -142,14 +142,15 @@ public class ShoppingListPanel extends UIElement {
 
         items.forEach(ShopItemElement::update);
         items.removeAll(toRemove);
-        // Reset the discount if the membership card is removed from the list manually.
+
+        // Reset the discount if a relic that applies discount is removed from the list manually.
         // The price does not need to be changed from removeItem because purchasing the membership card maintains the
         // discount.
-        if (toRemove.stream().anyMatch((element) -> element instanceof RelicItemElement
-            && ((RelicItemElement) element).relic instanceof MembershipCard)) {
-            costMultiplier = 1f;
-            updateDiscounts();
-        }
+        toRemove.stream().filter((element) -> element instanceof RelicItemElement &&
+                RelicItemElement.appliesDiscount(((RelicItemElement) element).relic)).forEach((element) ->
+            costMultiplier /= RelicItemElement.getMultiplier(((RelicItemElement) element).relic));
+        updateDiscounts();
+
         toRemove.clear();
 
         total.update();
@@ -202,9 +203,9 @@ public class ShoppingListPanel extends UIElement {
             return;
         }
 
-        // Set the cost multiplier when the membership card is picked.
-        if (storeRelic.relic instanceof MembershipCard) {
-            costMultiplier = 0.5f;
+        // Set the cost multiplier when a relic that applies discount is picked.
+        if (RelicItemElement.appliesDiscount(storeRelic.relic)) {
+            costMultiplier *= RelicItemElement.getMultiplier(storeRelic.relic);
             updateDiscounts();
         }
 

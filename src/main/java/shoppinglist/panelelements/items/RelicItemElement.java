@@ -1,5 +1,6 @@
 package shoppinglist.panelelements.items;
 
+import basemod.ReflectionHacks;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.megacrit.cardcrawl.core.Settings;
@@ -7,10 +8,14 @@ import com.megacrit.cardcrawl.helpers.FontHelper;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import com.megacrit.cardcrawl.relics.MembershipCard;
 import com.megacrit.cardcrawl.shop.StoreRelic;
+import jdk.internal.reflect.Reflection;
 import shoppinglist.ShoppingListMod;
 import shoppinglist.ShoppingListPanel;
 import shoppinglist.panelelements.PanelElement;
 import shoppinglist.panelelements.PanelFont;
+
+import java.lang.reflect.Modifier;
+import java.util.Arrays;
 
 public class RelicItemElement extends ShopItemElement {
     public AbstractRelic relic;
@@ -47,5 +52,14 @@ public class RelicItemElement extends ShopItemElement {
         if (!(relic instanceof MembershipCard)) {
             super.applyDiscount(multiplier);
         }
+    }
+
+    public static boolean appliesDiscount(AbstractRelic relic) {
+        return Arrays.stream(relic.getClass().getDeclaredFields()).anyMatch((field) ->
+            Modifier.isStatic(field.getModifiers()) && field.getName().equals("MULTIPLIER"));
+    }
+
+    public static float getMultiplier(AbstractRelic relic) {
+        return ReflectionHacks.getPrivateStatic(relic.getClass(), "MULTIPLIER");
     }
 }
