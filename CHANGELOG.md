@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.0.7] - 2022-08-11 - Minor Adjustments
+
+#### Features
+
+* The shopping list will remind you how to use it if you don't use it for too long.
+
+#### Bug Fixes
+
+* Removed residual debug logging.
+
 ## [0.0.6] - 2021-05-14 - Bug Fixes
 
 #### Features

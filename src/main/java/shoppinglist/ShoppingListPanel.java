@@ -30,6 +30,8 @@ import java.util.ArrayList;
 // The shopping list panel is a panel added to a shop screen to help the player to plan out their shop.
 public class ShoppingListPanel extends UIElement {
     public static final Logger logger = LogManager.getLogger(ShoppingListPanel.class.getName());
+    // Track the number of shop screens viewed since the last use to remind the user what to do.
+    private static int shopScreensViewedSinceUsage = 0;
 
     public ShopScreen shopScreen;
     private ShapeRenderer shapeRenderer = new ShapeRenderer();
@@ -54,6 +56,14 @@ public class ShoppingListPanel extends UIElement {
         height = PanelElement.HEIGHT * Settings.scale;
 
         updateItemPositions();
+
+        // If the list hasn't been used in a while, remind the player how to use it.
+        shopScreensViewedSinceUsage++;
+        if (shopScreensViewedSinceUsage >= 3) {
+            ShoppingListMod.config.setBoolean("shownAltClickTooltip", false);
+            ShoppingListMod.config.setBoolean("shownDragTooltip", false);
+            ShoppingListMod.config.setBoolean("shownRemoveTooltip", false);
+        }
     }
 
     @Override
@@ -273,6 +283,9 @@ public class ShoppingListPanel extends UIElement {
     private void addItemElement(ShopItemElement itemElement) {
         itemElement.applyDiscount(costMultiplier);
         items.add(itemElement);
+
+        // Reset the counter once an element has been added.
+        shopScreensViewedSinceUsage = 0;
     }
 
     private ShopSpeechBubble speechBubble;
