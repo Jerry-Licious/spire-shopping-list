@@ -245,7 +245,8 @@ public class ShoppingListPanel extends UIElement {
 
     public void addPotion(StorePotion storePotion) {
         if (items.stream().anyMatch((item) -> item instanceof PotionItemElement &&
-                StorePotionPurchasePatch.potionEq(((PotionItemElement) item).potion,storePotion.potion))) {
+                StorePotionPurchasePatch.potionEq(((PotionItemElement) item).potion,storePotion.potion) &&
+                item.price == storePotion.price)) {
             return;
         }
         if (ShoppingListMod.config.preventOverdraw() &&
